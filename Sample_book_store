@@ -1,0 +1,28 @@
+CREATE TABLE books_inventory (id INTEGER PRIMARY KEY, title TEXT, author TEXT, genre TEXT, format TEXT, price REAL);
+
+INSERT INTO books_inventory VALUES (1, "The Lion, the Witch, and the Wardrobe", "C.S. Lewis", "YA fantasy", "paperback", 5.99);
+INSERT INTO books_inventory VALUES (2, "The Ear, the Eye, and the Arm", "Nancy Farmer", "YA distopian fantasy", "paperback", 5.99);
+INSERT INTO books_inventory VALUES (3, "The Swiftly Tilting Planet", "Madeline L'Engle", "YA fantasy", "hardback", 9.99);
+INSERT INTO books_inventory VALUES (4, "The Overstory", "Richard Powers", "environmental fantasy", "hardcover", 20);
+INSERT INTO books_inventory VALUES (5, "Harry Potter and the Philosopher's Stone", "JK Rowling", "YA fantasy", "hardcover", 14.99);
+INSERT INTO books_inventory VALUES (6, "Harry Potter and the Chamber of Secrets", "JK Rowling", "YA fantasy", "hardcover", 14.99);
+INSERT INTO books_inventory VALUES (7, "Harry Potter and the Prisoner of Azkaban", "JK Rowling", "YA fantasy", "hardcover", 14.99);
+INSERT INTO books_inventory VALUES (8, "Harry Potter and the Goblet of Fire", "JK Rowling", "YA fantasy", "hardcover", 14.99);
+INSERT INTO books_inventory VALUES (9, "Harry Potter and the Order of the Phoenix", "JK Rowling", "YA fantasy", "hardcover", 14.99);
+INSERT INTO books_inventory VALUES (10, "Harry Potter and the Half Blood Prince", "JK Rowling", "YA fantasy", "hardcover", 14.99);
+INSERT INTO books_inventory VALUES (11, "Harry Potter and the Deathly Hallows", "JK Rowling", "YA fantasy", "hardcover", 20);
+INSERT INTO books_inventory VALUES (12, "Harry Potter and the Deathly Hallows", "JK Rowling", "YA fantasy", "hardcover", 20);
+INSERT INTO books_inventory VALUES (13, "Harry Potter and the Deathly Hallows", "JK Rowling", "YA fantasy", "hardcover", 20);
+INSERT INTO books_inventory VALUES (14, "Harry Potter and the Deathly Hallows", "JK Rowling", "YA fantasy", "hardcover", 20);
+INSERT INTO books_inventory VALUES (15, "Harry Potter and the Deathly Hallows", "JK Rowling", "YA fantasy", "hardcover", 20);
+
+/*Inventory Summary*/
+SELECT DISTINCT title FROM books_inventory;
+SELECT SUM(price) FROM books_inventory;
+
+/*Need to Stock*/
+SELECT title, COUNT(*) 
+    FROM books_inventory
+    GROUP BY title
+    HAVING COUNT(*) <= 1;
+    
