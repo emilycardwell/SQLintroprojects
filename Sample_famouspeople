@@ -1,0 +1,134 @@
+CREATE TABLE famous_people(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, career TEXT);
+
+INSERT INTO famous_people(name, career) VALUES("Natalie Portman", "actor");
+INSERT INTO famous_people(name, career) VALUES("Meryl Streep", "actor");
+INSERT INTO famous_people(name, career) VALUES("Sigourney Weaver", "actor");
+INSERT INTO famous_people(name, career) VALUES("Helen Miren", "actor");
+INSERT INTO famous_people(name, career) VALUES("Emily Blunt", "actor");
+INSERT INTO famous_people(name, career) VALUES("Ella Fitzgerald", "singer");
+INSERT INTO famous_people(name, career) VALUES("Diana Damrau", "singer");
+INSERT INTO famous_people(name, career) VALUES("Esperanza Spalding", "singer");
+INSERT INTO famous_people(name, career) VALUES("Enya", "singer");
+INSERT INTO famous_people(name, career) VALUES("Wayetu Moore", "author");
+INSERT INTO famous_people(name, career) VALUES("Ursula Le Guin", "author");
+INSERT INTO famous_people(name, career) VALUES("Jane Austen", "author");
+INSERT INTO famous_people(name, career) VALUES("Isabel Allende", "author");
+
+
+CREATE TABLE movies(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, genre TEXT, release_year INTEGER, fave_actor_id INTEGER);
+
+INSERT INTO movies(title, genre, release_year, fave_actor_id) VALUES("Leon: the Professional", "action", 1994, 1);
+INSERT INTO movies(title, genre, release_year, fave_actor_id) VALUES("The Hours", "drama", 2002, 2);
+INSERT INTO movies(title, genre, release_year, fave_actor_id) VALUES("Alien", "sci-fi horror", 1979, 3);
+INSERT INTO movies(title, genre, release_year, fave_actor_id) VALUES("Gosford Park", "drama", 2001, 4);
+INSERT INTO movies(title, genre, release_year, fave_actor_id) VALUES("A Quiet Place", "sci-fi horror", 2018, 5);
+
+CREATE TABLE actor_oscars(id INTEGER PRIMARY KEY AUTOINCREMENT, actor_id INTEGER, actor_award_count INTEGER);
+
+INSERT INTO actor_oscars(actor_id, actor_award_count) VALUES(1, 1);
+INSERT INTO actor_oscars(actor_id, actor_award_count) VALUES(2, 3);
+INSERT INTO actor_oscars(actor_id, actor_award_count) VALUES(3, 0);
+INSERT INTO actor_oscars(actor_id, actor_award_count) VALUES(4, 1);
+INSERT INTO actor_oscars(actor_id, actor_award_count) VALUES(5, 0);
+
+CREATE TABLE movie_oscars(id INTEGER PRIMARY KEY AUTOINCREMENT, movie_id INTEGER, oscar_award TEXT, recipient TEXT);
+
+INSERT INTO movie_oscars(movie_id, oscar_award, recipient) VALUES(2, "Best Actress", "Nicole Kidman");
+INSERT INTO movie_oscars(movie_id, oscar_award, recipient) VALUES(3, "Best Visual Effects", "various");
+INSERT INTO movie_oscars(movie_id, oscar_award, recipient) VALUES(4, "Best Screenplay", "Julian Fellowes");
+
+CREATE TABLE songs(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, genre TEXT, record_year INTEGER, singer_id INTEGER);
+
+INSERT INTO songs(title, genre, record_year, singer_id) VALUES("Stardust", "jazz", 1963, 6);
+INSERT INTO songs(title, genre, record_year, singer_id) VALUES("Queen of the Night", "opera", 2013, 7);
+INSERT INTO songs(title, genre, record_year, singer_id) VALUES("Precious", "jazz", 2008, 8);
+INSERT INTO songs(title, genre, record_year, singer_id) VALUES("How Can I Keep From Singing", "new age", 1991, 9);
+
+CREATE TABLE singers(id INTEGER PRIMARY KEY AUTOINCREMENT, singer_id INTEGER, place_of_birth TEXT, year_of_birth INTEGER, year_of_death INTEGER);
+
+INSERT INTO singers(singer_id, place_of_birth, year_of_birth, year_of_death) VALUES(6, "USA", 1917, 1996);
+INSERT INTO singers(singer_id, place_of_birth, year_of_birth, year_of_death) VALUES(7, "Germany", 1971, 0);
+INSERT INTO singers(singer_id, place_of_birth, year_of_birth, year_of_death) VALUES(8, "USA", 1984, 0);
+INSERT INTO singers(singer_id, place_of_birth, year_of_birth, year_of_death) VALUES(9, "Ireland", 1961, 0);
+
+CREATE TABLE grammys(id INTEGER PRIMARY KEY AUTOINCREMENT, singer_id INTEGER, grammy_count INTEGER);
+
+INSERT INTO grammys(singer_id, grammy_count) VALUES(6, 13);
+INSERT INTO grammys(singer_id, grammy_count) VALUES(7, 0);
+INSERT INTO grammys(singer_id, grammy_count) VALUES(8, 5);
+INSERT INTO grammys(singer_id, grammy_count) VALUES(9, 4);
+
+CREATE TABLE books(id INTEGER PRIMARY KEY AUTOINCREMENT, author_id INTEGER, title TEXT, genre TEXT);
+
+INSERT INTO books(author_id, title, genre) VALUES(10, "She Would Be King", "historical fiction");
+INSERT INTO books(author_id, title, genre) VALUES(11, "Left Hand of Darkness", "sci-fi");
+INSERT INTO books(author_id, title, genre) VALUES(12, "Pride and Prejudice", "fiction");
+INSERT INTO books(author_id, title, genre) VALUES(13, "The House of the Spirits", "fiction");
+
+CREATE TABLE characters(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, book_id INTEGER);
+
+INSERT INTO characters(name, book_id) VALUES("Gbessa", 1);
+INSERT INTO characters(name, book_id) VALUES("June Dey", 1);
+INSERT INTO characters(name, book_id) VALUES("Norman Aragon", "1");
+INSERT INTO characters(name, book_id) VALUES("Genly Ai", "2");
+INSERT INTO characters(name, book_id) VALUES("Estraven", "2");
+INSERT INTO characters(name, book_id) VALUES("Elizabeth Bennet", "3");
+INSERT INTO characters(name, book_id) VALUES("Mr. Darcy", "3");
+INSERT INTO characters(name, book_id) VALUES("Mr. Collins", "3");
+INSERT INTO characters(name, book_id) VALUES("Mr. Wickham", "3");
+INSERT INTO characters(name, book_id) VALUES("Esteban", "4");
+INSERT INTO characters(name, book_id) VALUES("Alba", "4");
+
+CREATE TABLE relationships(id INTEGER PRIMARY KEY AUTOINCREMENT, character1_id INTEGER, character2_id INTEGER, relationship TEXT);
+
+INSERT INTO relationships(character1_id, character2_id, relationship) VALUES(2, 3, "friends");
+INSERT INTO relationships(character1_id, character2_id, relationship) VALUES(4, 5, "romance");
+INSERT INTO relationships(character1_id, character2_id, relationship) VALUES(6, 7, "romance");
+INSERT INTO relationships(character1_id, character2_id, relationship) VALUES(6, 8, "romance");
+INSERT INTO relationships(character1_id, character2_id, relationship) VALUES(6, 9, "romance");
+INSERT INTO relationships(character1_id, character2_id, relationship) VALUES(7, 9, "enmity");
+INSERT INTO relationships(character1_id, character2_id, relationship) VALUES(10, 11, "family");
+
+SELECT famous_people.name, actor_oscars.actor_award_count, movies.title, movie_oscars.oscar_award
+    FROM famous_people
+    LEFT OUTER JOIN movies
+    ON famous_people.id = movies.fave_actor_id
+    LEFT OUTER JOIN actor_oscars
+    ON famous_people.id = actor_oscars.actor_id
+    LEFT OUTER JOIN movie_oscars
+    ON movies.id = movie_oscars.movie_id
+    WHERE famous_people.career = "actor"
+    ORDER BY actor_award_count;
+    
+SELECT famous_people.name, singers.place_of_birth, grammys.grammy_count, songs.title, songs.record_year, 
+    CASE
+        WHEN singers.year_of_death = 0
+            THEN (2022-singers.year_of_birth)
+        ELSE "deceased"
+        END as "age"
+    FROM songs
+    LEFT OUTER JOIN famous_people
+    ON songs.singer_id = famous_people.id
+    LEFT OUTER JOIN singers
+    ON singers.singer_id = famous_people.id
+    LEFT OUTER JOIN grammys
+    ON grammys.singer_id = famous_people.id
+    WHERE famous_people.career = "singer"
+    ORDER BY age;
+
+SELECT relationships.relationship, COUNT(*), famous_people.name as writer, books.title as book_title, books.genre
+    FROM famous_people
+    LEFT OUTER JOIN books
+    ON books.author_id = famous_people.id
+    LEFT OUTER JOIN characters
+    ON characters.book_id = books.id
+    JOIN relationships
+    ON characters.id = 
+        relationships.character1_id
+    JOIN characters secondary
+    ON secondary.id = 
+        relationships.character2_id
+    WHERE famous_people.career = "author"
+    GROUP BY book_title, relationship
+    ORDER BY COUNT(*) DESC;
+    
