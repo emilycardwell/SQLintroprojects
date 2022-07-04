@@ -1,6 +1,53 @@
 
 CREATE TABLE books_read_in_2022(id INT PRIMARY KEY AUTOINCREMENT, date DATE, title TEXT, author TEXT, ranking_out_of_10 INT, comments TEXT);
 
-/* INSERT INTO books_read_in_2022(date, title, author, ranking_out_of_10, comments) VALUES (0000-00-00, "","", INT,""); */
+/* 
+INSERT INTO books_read_in_2022(date, title, author, ranking_out_of_10, comments) VALUES (2022-00-00, "", "", INT, "");
+*/
 
-INSERT INTO books_read_in_2022(date, title, author, ranking_out_of_10, comments) VALUES (2022-07-03, "The Alloy of Law","Brandon Sanderson", 8,"very enjoyable, love the magic system, invested in the characters");
+INSERT INTO books_read_in_2022(date, title, author, ranking_out_of_10, comments) VALUES (2022-07-03, "The Alloy of Law","Sanderson", 8,"very enjoyable, love the magic system, invested in the characters, reread");
+INSERT INTO books_read_in_2022(date, title, author, ranking_out_of_10, comments) VALUES (2022-06-23, "Elantris","Sanderson", 9,"invested in characters, feminist, unexpected ending, happy ending");
+INSERT INTO books_read_in_2022(date, title, author, ranking_out_of_10, comments) VALUES (2022-06-21, "Fried Green Tomatoes", "Flagg", 7, "lesbian themes, a little slow, multigenerational, mystery, character development lacking for historical characters");
+INSERT INTO books_read_in_2022(date, title, author, ranking_out_of_10, comments) VALUES (2022-06-14, "Interpreter of Maladies", "Lahiri", 8, "immigrant stories, character driven, sad"); 
+INSERT INTO books_read_in_2022(date, title, author, ranking_out_of_10, comments) VALUES (2022-06-22, "Mistborn trilogy", "Sanderson", 7, "action, a little slow, great mythology, invested in characters, reread"); 
+INSERT INTO books_read_in_2022(date, title, author, ranking_out_of_10, comments) VALUES (2022-06-10, "Auntie Poldi & the Sicilian Lion", "Giordano", 6, "mystery, great characters, slow, plot wasn't great");
+INSERT INTO books_read_in_2022(date, title, author, ranking_out_of_10, comments) VALUES (2022-06-01, "Midnight Library", "Haig", 6, "good depiction of depression, dissapointing end, not very feminist, cool concept");
+
+INSERT INTO books_read_in_2022(date, title, author, ranking_out_of_10, comments) VALUES (2022-05-00, "True Dead", "Hunter", 7, "good fluff");
+INSERT INTO books_read_in_2022(date, title, author, ranking_out_of_10, comments) VALUES (2022-05-00, "Black Water", "Hunter", 7, "good fluff");
+INSERT INTO books_read_in_2022(date, title, author, ranking_out_of_10, comments) VALUES (2022-05-00, "Steelheart", "Sanderson", 5, "kinda childish, interesting magic");
+
+INSERT INTO books_read_in_2022(date, title, author, ranking_out_of_10, comments) VALUES (2022-04-00, "Earthsea No. 3", "LeGuin", 6, "slow, enjoyable, scenic");
+INSERT INTO books_read_in_2022(date, title, author, ranking_out_of_10, comments) VALUES (2022-04-00, "Wizard's Guide to Defensive Baking", "Kingfisher", 7, "very cool magic, cooking, childish");
+INSERT INTO books_read_in_2022(date, title, author, ranking_out_of_10, comments) VALUES (2022-04-00, "Xenogenisis trilogy", "Butler", 5, "depressing, survivorist");
+
+INSERT INTO books_read_in_2022(date, title, author, ranking_out_of_10, comments) VALUES (2022-03-00, "Locke Lamora trilogy", "Lynch", 8, "progressively got better female characters, great characters, funny");
+INSERT INTO books_read_in_2022(date, title, author, ranking_out_of_10, comments) VALUES (2022-03-00, "Lady's Guide to Celestial Mechanics", "Waite", 7, "lesbian romance, little slow, low on plot, invested in characters");
+
+INSERT INTO books_read_in_2022(date, title, author, ranking_out_of_10, comments) VALUES (2022-02-00, "The Gods Themselves", "Asimov", 8, "super different, parallel universes, interesting aliens");
+INSERT INTO books_read_in_2022(date, title, author, ranking_out_of_10, comments) VALUES (2022-02-00, "Freedom's Ransom", "McCaffrey", 6, "entertaining, least favorite of series because of lack of romance");
+INSERT INTO books_read_in_2022(date, title, author, ranking_out_of_10, comments) VALUES (2022-02-00, "Powers that Be", "McCaffrey", 8, "very cool evolutionary branch, romance, cerebral, meditation");
+INSERT INTO books_read_in_2022(date, title, author, ranking_out_of_10, comments) VALUES (2022-02-00, "Acorna", "McCaffrey", 6, "kinda silly unicorn girl, interesting aliens, funny and interesting characters");
+
+INSERT INTO books_read_in_2022(date, title, author, ranking_out_of_10, comments) VALUES (2022-01-00, "The Telling", "LeGuin", 8, "hanish novel, relatable main character, anticlamactic, kinda drags on in the last third");
+INSERT INTO books_read_in_2022(date, title, author, ranking_out_of_10, comments) VALUES (2022-01-00, "Dark Witch", "Roberts", 5, "half-assed plot, romance-heavy, main character seems kinda dumb, predictable");
+
+SELECT title, CASE
+  WHEN date LIKE %00% THEN "no"
+  ELSE "yes"
+  END as "day of completion known?"
+  FROM books_read_in_2022;
+  
+SELECT SUM(CASE
+    WHEN title LIKE "%trilogy%" THEN 3
+    ELSE 1
+    END) as "book total"
+    FROM books_read_in_2022;
+    
+SELECT SUM(CASE
+    WHEN title LIKE "%trilogy%" THEN 3
+    WHEN comments LIKE "%reread%" THEN 0
+    ELSE 1
+    END) as "book total without rereads"
+    FROM books_read_in_2022;
+    
