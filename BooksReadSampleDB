@@ -1,4 +1,6 @@
 
 CREATE TABLE books_read_in_2022(id INT PRIMARY KEY AUTOINCREMENT, date DATE, title TEXT, author TEXT, ranking_out_of_10 INT, comments TEXT);
 
-INSERT INTO books_read_in_2022(date, title, author, ranking_out_of_10, comments) VALUES (0000-00-00, "","", INT,"");
+/* INSERT INTO books_read_in_2022(date, title, author, ranking_out_of_10, comments) VALUES (0000-00-00, "","", INT,""); */
+
+INSERT INTO books_read_in_2022(date, title, author, ranking_out_of_10, comments) VALUES (2022-07-03, "The Alloy of Law","Brandon Sanderson", 8,"very enjoyable, love the magic system, invested in the characters");
